@@ -3,20 +3,25 @@ require 'rack'
 class PersonalSite
   def self.call(env)
     case env["PATH_INFO"]
-    when '/'         then index
+    when '/'         then about
     when '/about'    then about
+    when '/blog'     then blog
     when '/main.css' then css
     else
       error
     end
   end
 
-  def self.index
-    render_view('index.html')
-  end
+  # def self.index
+  #   render_view('index.html')
+  # end
 
   def self.about
     render_view('about.html')
+  end
+
+  def self.blog
+    render_view('blog.html')
   end
 
   def self.error
